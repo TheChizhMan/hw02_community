@@ -131,3 +131,5 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+PAGE_SIZE = (10)
