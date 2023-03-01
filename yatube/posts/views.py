@@ -7,8 +7,7 @@ from .models import Group, Post
 
 def index(request):
     posts = Post.objects.all()[:settings.PAGE_SIZE]
-    context = {'posts': posts,
-    }
+    context = {'posts': posts,}
     return render(request, 'posts/index.html', context)
 
 
