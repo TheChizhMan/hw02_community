@@ -54,4 +54,3 @@ def post_detail(request, post_id: int):
         'post_count': post_list,
     }
     return render(request, 'posts/post_detail.html', context)
-
