@@ -1,11 +1,14 @@
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
-from .models import Group, Post, Profile
+from .models import Group, Post
+from django.contrib.auth.models import User
 
+
+#User = get_user_model()
 
 def index(request):
-    post_list = Post.objects.all().order_by('-pub_date')
+    post_list = Post.objects.all()
     paginator = Paginator(post_list, settings.PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -17,7 +20,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    post_list = group.posts.all().order_by('-pub_date')
+    post_list = group.posts.all()
     paginator = Paginator(post_list, settings.PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -28,17 +31,27 @@ def group_posts(request, slug):
     return render(request, 'posts/group_list.html', context)
 
 
-def profile(request, username):
-    # Здесь код запроса к модели и создание словаря контекста
-    # user = get_object_or_404(Profile, username=username)
+def profile(request, username: str):
+    user = User.objects.get(username=username)
+    post_list = user.posts.all()
+    paginator = Paginator(post_list, settings.PAGE_SIZE)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        # 'user': user,
-    }
+        'user': user,
+        'page_obj': page_obj,
+        'post_count': user.posts.count()}
+    # Выводим шаблон с данными
     return render(request, 'posts/profile.html', context)
 
 
-def post_detail(request, post_id):
-    # Здесь код запроса к модели и создание словаря контекста
+def post_detail(request, post_id: int):
+    post = get_object_or_404(Post, pk=post_id)
+    post_list = post.user.posts.count()
     context = {
+        'post': post,
+        'limit': settings.CHARACTER_LIMIT_IN_TITLE,
+        'user': post.user,
+        'count': post_list,
     }
     return render(request, 'posts/post_detail.html', context)

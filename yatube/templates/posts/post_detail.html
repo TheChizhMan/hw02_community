@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Пост детейл {{ posts.title }}{% endblock %}
+{% block title %} Пост детейл {{ posts.title.limit }}{% endblock %}
 {% block content %} <main>
     <div class="row">
       <aside class="col-12 col-md-3">
@@ -10,19 +10,19 @@
           {% if post.group %}
           <li class="list-group-item">
             Группа: {{ group.title }} <!-- замените значение на название группы, если у поста есть группа ГОТОВО-->
-            <a href="{{ post.group.get_absolute_url }}">
+            <a href="{% url 'posts:group_list' post.group.slug %}">
               все записи группы
             </a>
           </li>
           {% endif %}
           <li class="list-group-item">
-            Автор: {{ post.author.get_full_name }}<!-- замените значение на имя автора ГОТОВО-->
+            Автор: {{ user.get_full_name }}
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            Всего постов автора:  <span>{{ post.author.posts.count }}</span> <!-- замените значение на количество постов автора ГОТОВО-->
+            Всего постов автора:  <span>{{ post_count }}</span>
           </li>
           <li class="list-group-item">
-            <a href="{{ post.author.get_absolute_url }}"> <!-- {% url 'posts:group_list' post.group.slug %}-->
+            <a href="{% url 'posts:profile' post.author.username %}">
               все посты пользователя
             </a>
           </li>
@@ -30,7 +30,7 @@
       </aside>
       <article class="col-12 col-md-9">
         <p>
-          {{ post.text }}<!-- замените значение на текст поста ГОТОВО-->
+          {{ post.text }}
         </p>
       </article>
     </div> 

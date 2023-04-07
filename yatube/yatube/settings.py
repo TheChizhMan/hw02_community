@@ -142,6 +142,7 @@ DATABASES = {
 }
 
 PAGE_SIZE = (10)
+CHARACTER_LIMIT_IN_TITLE = (30)
 
 #  подключаем движок filebased.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
