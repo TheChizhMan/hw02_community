@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} Пост детейл {{ posts.title }}{% endblock %}
+{% block content %} <main>
+    <div class="row">
+      <aside class="col-12 col-md-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Дата публикации: {{ post.pub_date|date:"d E Y" }} <!-- замените значение на дату публикации поста -->
+          </li>
+          {% if post.group %}
+          <li class="list-group-item">
+            Группа: {{ group.title }} <!-- замените значение на название группы, если у поста есть группа ГОТОВО-->
+            <a href="{{ post.group.get_absolute_url }}">
+              все записи группы
+            </a>
+          </li>
+          {% endif %}
+          <li class="list-group-item">
+            Автор: {{ post.author.get_full_name }}<!-- замените значение на имя автора ГОТОВО-->
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Всего постов автора:  <span>{{ post.author.posts.count }}</span> <!-- замените значение на количество постов автора ГОТОВО-->
+          </li>
+          <li class="list-group-item">
+            <a href="{{ post.author.get_absolute_url }}"> <!-- {% url 'posts:group_list' post.group.slug %}-->
+              все посты пользователя
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <article class="col-12 col-md-9">
+        <p>
+          {{ post.text }}<!-- замените значение на текст поста ГОТОВО-->
+        </p>
+      </article>
+    </div> 
+  </main>
+{% endblock %} 

@@ -1,0 +1,93 @@
+<!-- templates/about/author.html -->
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+ <style>
+  body {
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+   color: #333;
+   margin: 0;
+   padding: 0;
+  }
+
+  .container {
+   max-width: 960px;
+   margin: 0 auto;
+   padding: 20px;
+  }
+
+  h1 {
+   font-size: 36px;
+   margin-bottom: 10px;
+  }
+
+  h2 {
+   font-size: 24px;
+   margin-bottom: 10px;
+  }
+
+  p {
+   font-size: 18px;
+   margin-bottom: 20px;
+  }
+
+  a {
+   color: #333;
+  }
+
+  a:hover {
+   color: #999;
+  }
+
+  .social {
+   margin-top: 30px;
+  }
+
+  .social a {
+   display: inline-block;
+   font-size: 20px;
+   margin-right: 10px;
+   color: #333;
+   text-decoration: none;
+   transition: color 0.2s;
+  }
+
+  .social a:hover {
+   color: #999;
+  }
+
+  .github {
+   background: url('https://image.flaticon.com/icons/svg/37/37318.svg') no-repeat;
+   background-size: 24px 24px;
+   padding-left: 30px;
+  }
+
+  .telegram {
+   background: url('https://image.flaticon.com/icons/svg/1039/1039328.svg') no-repeat;
+   background-size: 24px 24px;
+   padding-left: 30px;
+  }
+
+  .linkedin {
+   background: url('https://image.flaticon.com/icons/svg/174/174857.svg') no-repeat;
+   background-size: 24px 24px;
+   padding-left: 30px;
+  }
+ </style>
+</head>
+<body>
+ <div class="container">
+  <h1>Об авторе</h1>
+  <h2>Чиж Игорь</h2>
+  <p>Я занимаюсь разработкой программного обеспечения и люблю создавать полезные и интересные проекты.</p>
+  <p>Пока я не могу предложить вам что-то прямо сейчас, но я работаю над несколькими проектами, которые скоро будут доступны для использования.</p>
+  <div class="social">
+   <a class="github" href="https://github.com/thechizhman" target="_blank">Github</a>
+   <a class="telegram" href="https://t.me/thechizhman" target="_blank">Telegram</a>
+   <a class="linkedin" href="https://www.linkedin.com/in/%D0%B8%D0%B3%D0%BE%D1%80%D1%8C-%D1%87%D0%B8%D0%B6-33733a265/" target="_blank">LinkedIn</a>
+  </div>
+ </div>
+</body>
+</html>
+{% endblock %}
