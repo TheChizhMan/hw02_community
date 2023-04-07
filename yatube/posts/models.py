@@ -17,8 +17,7 @@ class Group(models.Model):
 class Post(models.Model):
     text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User,
-                               on_delete=models.CASCADE,
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='posts')
     group = models.ForeignKey(Group,
                               on_delete=models.SET_NULL,
@@ -30,10 +29,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.text[settings.PAGE_SIZE]
-
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self) -> str:
-        return self.user

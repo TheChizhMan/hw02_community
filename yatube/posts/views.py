@@ -47,11 +47,11 @@ def profile(request, username: str):
 
 def post_detail(request, post_id: int):
     post = get_object_or_404(Post, pk=post_id)
-    post_list = post.user.posts.count()
+    post_list = post.author.posts.count()
     context = {
         'post': post,
         'limit': settings.CHARACTER_LIMIT_IN_TITLE,
-        'user': post.user,
-        'count': post_list,
+        'post_count': post_list,
     }
     return render(request, 'posts/post_detail.html', context)
+

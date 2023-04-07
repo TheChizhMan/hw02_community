@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Пост детейл {{ posts.title.limit }}{% endblock %}
+{% block title %} Пост детейл {{ post.text|truncatechars:limit }}{% endblock %}
 {% block content %} <main>
     <div class="row">
       <aside class="col-12 col-md-3">
@@ -9,14 +9,12 @@
           </li>
           {% if post.group %}
           <li class="list-group-item">
-            Группа: {{ group.title }} <!-- замените значение на название группы, если у поста есть группа ГОТОВО-->
-            <a href="{% url 'posts:group_list' post.group.slug %}">
-              все записи группы
-            </a>
+            Группа: {{ group.title }}
+            <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
           </li>
           {% endif %}
           <li class="list-group-item">
-            Автор: {{ user.get_full_name }}
+            Автор: {{ post.author.username }}
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             Всего постов автора:  <span>{{ post_count }}</span>
