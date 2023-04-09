@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:index'
-# LOGOUT_REDIRECT_URL = 'posts:index'
+LOGOUT_REDIRECT_URL = 'posts:index'
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'core.apps.CoreConfig',
     'about.apps.AboutConfig',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
