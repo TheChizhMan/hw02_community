@@ -13,7 +13,7 @@
             Новый пост
           </div>
           <div class="card-body">
-            <form method="post" action="{% url 'post_create' %}">
+            <form method="post" action="{% url 'posts:post_create' %}">
               {% csrf_token %}
               <div class="form-group row my-3 p-3">
                 <label for="id_text">
@@ -30,7 +30,7 @@
                   Группа
                 </label>
                 <select name="group" class="form-control" id="id_group">
-                  <option value="" selected>---------</option>
+                  <option value="" selected>Выберите группу</option>
                   {% for group in groups %}
                   <option value="{{ group.id }}">{{ group.title }}</option>
                   {% endfor %}
