@@ -1,11 +1,11 @@
 from django.conf import settings
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator
 from .models import Group, Post
 from django.contrib.auth.models import User
 
+from .forms import PostForm
 
-#User = get_user_model()
 
 def index(request):
     post_list = Post.objects.all()
@@ -50,8 +50,20 @@ def post_detail(request, post_id: int):
     post_list = post.author.posts.count()
     context = {
         'post': post,
-        'limit': settings.CHARACTER_LIMIT_IN_TITLE,
         'post_count': post_list,
     }
     return render(request, 'posts/post_detail.html', context)
 
+
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('profile', username=request.user.username)
+    else:
+        form = PostForm()
+    context = {'form': form}
+    return render(request, 'posts/create_post.html', context)

@@ -144,6 +144,7 @@ DATABASES = {
 
 PAGE_SIZE = (10)
 CHARACTER_LIMIT_IN_TITLE = (30)
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #  подключаем движок filebased.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
