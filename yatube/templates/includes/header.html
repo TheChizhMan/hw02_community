@@ -9,7 +9,7 @@
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
-      </button>    
+      </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           {% with request.resolver_match.view_name as view_name %} 
@@ -21,7 +21,7 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item"> 
-            <a class="nav-link {% if view_name  == 'posts:post_create' %}active{% endif %}" href={% url 'posts:post_create' %}>Новая запись</a>
+            <a class="nav-link {% if view_name  == 'posts:post_create' %}active{% endif %}" href="{% url 'posts:post_create' %}">Новая запись</a>
           </li>
           <li class="nav-item"> 
             <a class="nav-link {% if view_name  == 'users:password_change' %}active{% endif %}" href="{% url 'users:password_change' %}">Изменить пароль</a>
@@ -30,7 +30,9 @@
             <a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
           </li>
           <li class="nav-item">
-            <span class="nav-link">Пользователь: {{ user.username }}</span>
+            <!-- <a class="nav-link" href="{% url 'posts:index' %}"> -->
+            Пользователь: {{ user.username }}
+          </a>
           </li>
           {% else %}
           <li class="nav-item"> 
