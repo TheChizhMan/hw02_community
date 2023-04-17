@@ -16,6 +16,5 @@ urlpatterns = [
     # Создание поста
     path('create/', views.post_create, name='post_create'),
     # Редактирование поста
-    path('<int:post_id>/edit/', views.post_edit, name='post_edit'),
+    path('posts/<int:post_id>/edit/', views.post_edit, name='post_edit')
 ]
-

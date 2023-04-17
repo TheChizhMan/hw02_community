@@ -43,7 +43,7 @@
         </p>
 
         {% if request.user == post.author %}
-          <a class="btn btn-primary" href="{% url 'posts:index' %}">
+          <a class="btn btn-primary" href="{% url 'post_edit' post_id=post.id %}">
             редактировать запись
           </a>  
 

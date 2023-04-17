@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'core.apps.CoreConfig',
     'about.apps.AboutConfig',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +143,7 @@ DATABASES = {
 
 PAGE_SIZE = (10)
 CHARACTER_LIMIT_IN_TITLE = (30)
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #  подключаем движок filebased.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
