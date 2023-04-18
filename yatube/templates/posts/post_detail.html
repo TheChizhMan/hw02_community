@@ -33,7 +33,7 @@
           {{ post.text }}
         </p>
         {% if request.user == post.author %}
-          <a class="btn btn-secondary" href="{% url 'posts:post_edit' post_id=post.id %}">
+          <a class="btn btn-primary" href="{% url 'posts:post_edit' post_id=48 %}">
             редактировать запись
           </a>  
         {% endif %}
